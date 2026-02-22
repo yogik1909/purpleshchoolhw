@@ -2,5 +2,7 @@
 
 from cli import main
 
+file_path = "orders.json"
+
 if __name__ == "__main__":
-    main()
+    main(file_path)
