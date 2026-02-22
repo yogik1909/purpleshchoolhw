@@ -1,5 +1,4 @@
 """Парсинг аргументов командной строки."""
 
-
-def main():
+def main(file_path: str):
     pass
