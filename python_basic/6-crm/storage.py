@@ -5,16 +5,22 @@ from order import Order
 
 
 
-def load(file_path: str):
-    """Загрузить заказы из файла. Если файла нет или JSON повреждён — вернуть []."""
-    with open(file_path, "r", encoding="utf-8") as file:
-        try:
-            return json.load(file)
-        except json.JSONDecodeError:
-            print("Ошибка: файл заказов повреждён или содержит неверный JSON. Используется пустой список.")
-            return []
+def load(file_path: str) -> list[Order]:
+
+    list_orders = []
+    try:
+        with open(file_path, "r", encoding="utf-8") as file:
+            list_orders = json.load(file)
+    except json.JSONDecodeError:
+        print("Ошибка при загрузке заказов: файл заказов повреждён или содержит неверный JSON. Используется пустой список.")
+    except FileNotFoundError:
+        print("Ошибка при загрузке заказов: файл заказов не найден. Используется пустой список.")
+    return list_orders
 
 def save(items: list[Order], file_path: str):
     """Сохранить список заказов в JSON-файл."""
-    with open(file_path, "w", encoding="utf-8") as file:
-        json.dump(items, file, ensure_ascii=False, indent=2)
+    try:
+        with open(file_path, "w", encoding="utf-8") as file:
+            json.dump(items, file, ensure_ascii=False, indent=2)
+    except Exception as e:
+        print(f"Ошибка при сохранении заказов: {e}")
