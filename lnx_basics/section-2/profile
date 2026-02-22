@@ -27,3 +27,6 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 export ENVIRONMENT=Dev
 alias cur='date'
+PS1='[\D{%a %b %d}]\u@\h\$ '
+PS1='[\D{%a %b %d}]\u@\h$ '
+PS1='[\D{%a %b %d}]\u@\h$ '
