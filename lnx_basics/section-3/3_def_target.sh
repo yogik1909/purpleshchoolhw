@@ -1,3 +1,4 @@
 #!/bin/bash
 # Установить /etc/fstab как целевой файл для монтирования
-sudo systemctl get-default > lnx_basics/section-3/sys-target
+script_dir=$(dirname "$0")
+sudo systemctl get-default > $script_dir/sys-target
