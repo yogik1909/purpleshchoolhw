@@ -1,0 +1,177 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #fff;
+  color: #000;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+.tariffs {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.global__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.global__subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0 0 2.5rem;
+  line-height: 1.5;
+}
+
+.tariffs__cards {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .tariffs__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .tariffs__cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  min-width: 0;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.card_white {
+  background: #fff;
+}
+
+.card_white .card__title {
+  color: #000;
+}
+
+.card_white .card__desc {
+  color: #374151;
+}
+
+.card_blue {
+  background: #2563eb;
+  color: #fff;
+}
+
+.card_blue .card__title,
+.card_blue .card__desc,
+.card_blue .card__details dt,
+.card_blue .card__details dd:not(.card__value_highlight) {
+  color: #fff;
+}
+
+.card__badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+}
+
+.card__badge_light {
+  background: #4ade80;
+  color: #fff;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.card__desc {
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.4;
+}
+
+.card__details {
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card__row:last-child {
+  margin-bottom: 0;
+}
+
+.card__details dt {
+  font-size: 0.9rem;
+  color: #374151;
+  margin: 0;
+}
+
+.card_blue .card__details dt {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.card__details dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.card__value_highlight {
+  background: #fbbf24;
+  color: #000;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+}
+
+.card__btn {
+  margin-top: auto;
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card__btn_light {
+  background: #1d4ed8;
+}
+
+.card__btn:hover {
+  opacity: 0.95;
+}
