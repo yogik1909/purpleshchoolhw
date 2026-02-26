@@ -1,0 +1,3 @@
+
+$ echo "PS1='[\d][\t][\u][\@][\h][\$ ]'" | sudo tee -a /home/max/.profile
+PS1='[\d][\t][\u][\@][\h][$ ]'
