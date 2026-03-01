@@ -1,0 +1,17 @@
+Почему не получилось:
+dpkg -i не устанавливает зависимости пакета. У tor в control указаны Depends:
+libc6, libcap2, libevent-2.1-6, liblzma5, libseccomp2, libssl1.1, libsystemd0,
+libzstd1, zlib1g, adduser, lsb-base. Если какой-то из этих пакетов не установлен
+(часто на новых системах нет libssl1.1 — он заменён на libssl3), dpkg выдаёт
+ошибку вида «dependency problems - leaving unconfigured» и отказывается настроить
+пакет.
+
+Как исправить:
+1) Посмотреть точную ошибку: sudo dpkg -i .../tor_0.3.2.10-1_amd64.deb
+2) Доставить зависимости: sudo apt-get update && sudo apt-get install -f
+   (apt-get -f доустановит недостающие пакеты и донастроит tor).
+3) Если не хватает libssl1.1 — в новых Ubuntu его нет в репозиториях; тогда
+   скачать libssl1.1_*.deb с пакетами для старой/совместимой версии Ubuntu
+   и установить его перед tor: sudo dpkg -i libssl1.1_*.deb, затем снова
+   sudo dpkg -i .../tor_0.3.2.10-1_amd64.deb и при необходимости
+   sudo apt-get install -f.
