@@ -1,0 +1,4 @@
+Отключил репозиторий jammy-security universe через add-apt-repository:
+
+sudo add-apt-repository -r 'deb http://security.ubuntu.com/ubuntu jammy-security universe'
+sudo apt update

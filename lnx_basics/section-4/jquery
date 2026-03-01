@@ -1,0 +1,2 @@
+apt-cache search jquery | grep -i highlight
+sudo apt install -y libjs-jquery-jush
