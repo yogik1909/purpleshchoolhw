@@ -1,0 +1,1 @@
+grep -n '^[0-9]' lnx_basics/section-5/docs/copyright
