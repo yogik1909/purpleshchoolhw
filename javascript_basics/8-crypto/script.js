@@ -3,25 +3,22 @@ function crypto(password) {
         console.log("Password is too short");
         return password;
     }
-    const secret = password.split('').reverse();
-    secret.unshift(secret.pop());
-    secret.push(secret[1]);
-    secret.splice(1, 1)
+    
+    const secret__ = password.split('');
+    let leftPart = secret__.splice(0, 4);
+    const secret = leftPart.reverse();
+    secret.push(secret__.pop());
+    const middlePart = secret__.splice(1, 2);
+    secret.push(...middlePart);
+    secret.push(secret__[0]);
 
     return secret.join('');
-
 }
 
 function check(secret, password) {
-
-    const phrase = secret.split('').reverse();
-    phrase.unshift(phrase.pop());
-    phrase.push(phrase[1]);
-    phrase.splice(1, 1)
-
-    return password === phrase.join('');
+    return password === crypto(secret);
 }
 
 
 console.log(crypto("password"));
-console.log(check("dfds", "password"));
+console.log(check("ssapdorw", "password"));
