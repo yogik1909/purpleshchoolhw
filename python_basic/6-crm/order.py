@@ -1,53 +1,37 @@
 """Бизнес-логика заказов."""
 
-from datetime import datetime, timezone
-from typing import TypedDict
+from datetime import date, timezone
+from dataclasses import dataclass
 from typing import Optional
 from typing import List
 
 STATUSES = ("new", "in_progress", "done", "cancelled")
 
 
+@dataclass
 class Order:
     id: int
     title: str
     amount: float
     email: str
-    status: str
-    tags: List[str]
-    created_at: str
-    due: Optional[str]
-    closed_at: Optional[str]
-
-
-# Список заказов в памяти
-_orders: List[Order] = []
+    status: str = "new"
+    tags: Optional[str] | None = None
+    created_at: Optional[date] = None
+    due: Optional[date] = None
+    closed_at: Optional[date] = None
 
 
 def create_order(
+    order_ID: int,
     title: str,
     amount: float,
     email: str,
     status: str = "new",
-    tags: List[str] | None = None,
-    due: Optional[str] = None,
+    tags: Optional[str] = None,
+    due: Optional[date] = None,
 ) -> Order:
-    """Создать заказ. Возвращает созданный заказ (dict)."""
-    order_id = max((o["id"] for o in _orders), default=0) + 1
-    now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
-    order: Order = {
-        "id": order_id,
-        "title": title,
-        "amount": float(amount),
-        "email": email,
-        "status": status if status in STATUSES else "new",
-        "tags": list(tags) if tags is not None else [],
-        "created_at": now,
-        "due": due,
-        "closed_at": None,
-    }
-    _orders.append(order)
-    return order
+    """Создать заказ. Возвращает созданный заказ (Order)."""
+    return Order(id=order_ID, title=title, amount=amount,email=email,status=status,tags=tags,due=due, created_at=date.today(), closed_at=None)
 
 
 def list_orders() -> List[Order]:
