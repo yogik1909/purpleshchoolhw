@@ -7,7 +7,7 @@
 */
 
 function getDataFromArray(array){
-  const newArray = array.filter(item => isDate(item));
+  const newArray = array.map(item => isDate(item)).filter(item => item !== null);
   return newArray;
 }
 
@@ -27,11 +27,28 @@ function isDate(data) {
     year = datWithSlash[2];
   }
 
-  if (day.length === 2 && day > 0 && day < 31) {dayCheack = true;}
-  if (month.length === 2 && month > 0 && month <= 12) {monthCheack = true;}
-  if (year.length === 4 && year > 0) {yearCheack = true;}
+  if (year.length === 4 && year > 0) { yearCheack = true; }
+  else {
+    return null;
+  }
+  if (yearCheack && month.length === 2 && month > 0 && month <= 12){
+    monthCheack = true;
+  } 
+  else {
+    return null;
+  }
+  if (monthCheack && day.length === 2){
+    dayCheack = true;
+  }
+  else {return null;}
 
-  return dayCheack && monthCheack && yearCheack;
+  const yearIsLeap = parseInt(year) % 4 === 0 && parseInt(year) % 100 !== 0 || parseInt(year) % 400 === 0;
+  if (parseInt(month) === 2 && parseInt(day) > 28 + (yearIsLeap ? 1 : 0)) { return null; }
+  if (parseInt(day) > 30 && [4, 6, 9, 11].includes(parseInt(month))) { return null; }
+  if (parseInt(day) > 31 && [1, 3, 5, 7, 8, 10, 12].includes(parseInt(month))) { return null; }
+  
+  return [day, month, year].join('-');
+
 }
 
 const array = ['10-02-2022', 'тест', '11/12/2023', '00/13/2022', '41/12/2023']
