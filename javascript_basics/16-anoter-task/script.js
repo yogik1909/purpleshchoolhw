@@ -46,4 +46,11 @@ newTask.deleteTask = ToDoList.deleteTask.bind(newTask);
 newTask.updateTask = ToDoList.updateTask.bind(newTask);
 newTask.sortTasksByPriority = ToDoList.sortTasksByPriority.bind(newTask);
 
+newTask.addTask('Приготовить обед', 2, 1);
+newTask.deleteTask(1);
+newTask.updateTask(2, 'Приготовить ужин', 2);
+newTask.sortTasksByPriority();
+
+console.log(newTask.tasks);
+
 
