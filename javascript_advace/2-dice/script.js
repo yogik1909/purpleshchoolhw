@@ -10,7 +10,10 @@ function rollDice(dice) {
     }
 
     const diceNumber = parseInt(dice.slice(1));
-    console.log(diceNumber);
 
     return Math.floor(Math.random() * diceNumber) + 1;
 }
+
+
+console.log(rollDice('d6'));
+console.log(rollDice('d20'));
