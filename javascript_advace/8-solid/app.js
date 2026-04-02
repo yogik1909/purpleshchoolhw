@@ -36,18 +36,33 @@ class Billing {
 
     calculateTotal() {
         return this.amount;
+    }    
+}
+
+class FixedBilling extends Billing {
+    constructor(amount) {
+        super(amount);
     }
 
-    fixBilling() {
-        return this.#amount
+    calculateTotal() {
+        return super.calculateTotal();
+    }
+}
+class HourBilling extends Billing {
+    constructor(amount) {
+        super(amount);
     }
 
-    hourBilling(hours) {
-        return this.#amount * hours;
+    calculateTotal(hours) {
+        return super.calculateTotal() * hours;
+    }
+}
+class ItemBilling extends Billing {
+    constructor(amount) {
+        super(amount);
     }
 
-    itemBilling(items) {
-        return this.#amount * items;
+    calculateTotal(items) {
+        return super.calculateTotal() * items;
     }
-    
 }
