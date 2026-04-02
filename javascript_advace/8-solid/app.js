@@ -49,20 +49,30 @@ class FixedBilling extends Billing {
     }
 }
 class HourBilling extends Billing {
+    #hours;
     constructor(amount) {
         super(amount);
     }
 
-    calculateTotal(hours) {
-        return super.calculateTotal() * hours;
+    set hours(hours) {
+        this.#hours = hours;
+    }
+
+    calculateTotal() {
+        return super.calculateTotal() * this.#hours;
     }
 }
 class ItemBilling extends Billing {
+    #items;
     constructor(amount) {
         super(amount);
     }
 
-    calculateTotal(items) {
-        return super.calculateTotal() * items;
+    set items(items) {
+        this.#items = items;
+    }
+
+    calculateTotal() {
+        return super.calculateTotal() * this.#items;
     }
 }
