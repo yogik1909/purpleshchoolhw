@@ -10,9 +10,8 @@
 # hits.get(123)               # ❌ ошибка типов
 
 
-from dataclasses import dataclass
-from optparse import Option, Optional
-from typing import Generic, TypeVar
+from dataclasses import dataclass, field
+from typing import Generic, Optional, TypeVar
 
 K = TypeVar('K')
 V = TypeVar('V')
@@ -20,7 +19,7 @@ V = TypeVar('V')
 
 @dataclass
 class Cache(Generic[K, V]):
-    __cache: dict[K, V] = {}
+    __cache: dict[K, V] = field(default_factory=dict)
 
     
     def set(self, key: K, value: V):
