@@ -1,0 +1,23 @@
+[project]
+name = "eight-final"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Vova",email = "white_net@mail.ru"}
+]
+requires-python = ">=3.14,<4.0.0"
+dependencies = [
+    "textual (>=8.2.4,<9.0.0)",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry]
+packages = [{ include = "eight_final" }]
+
+[tool.poetry.scripts]
+monitoring = "eight_final.cli:run"
