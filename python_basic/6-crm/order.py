@@ -8,6 +8,29 @@ from typing import List
 STATUSES = ("new", "in_progress", "done", "cancelled")
 
 
+def _parse_optional_date(value: object) -> Optional[date]:
+    if value is None or value == "":
+        return None
+    if isinstance(value, date):
+        return value
+    return date.fromisoformat(str(value))
+
+
+def order_from_dict(data: dict) -> Order:
+    """Восстановить Order из словаря после json.load."""
+    return Order(
+        id=int(data["id"]),
+        title=str(data["title"]),
+        amount=float(data["amount"]),
+        email=str(data["email"]),
+        status=str(data.get("status", "new")),
+        tags=data.get("tags"),
+        created_at=_parse_optional_date(data.get("created_at")),
+        due=_parse_optional_date(data.get("due")),
+        closed_at=_parse_optional_date(data.get("closed_at")),
+    )
+
+
 @dataclass
 class Order:
     id: int
