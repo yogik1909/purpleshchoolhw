@@ -11,7 +11,10 @@ def parse_command_add(args: list[str]) -> dict | None:
         key, value = arg.split("=", 1)
         match key:
             case "--amount":
-                amount = float(value)
+                try:
+                    amount = float(value)
+                except ValueError:
+                    raise ValueError(f"Неверный формат суммы: {value!r}") from None
             case "--email":
                 email = value
             case "--due":

@@ -21,7 +21,10 @@ def main(ORDERS):
             case "help":
                 help_command()
             case "add":
-                add_order(ORDERS, args)
+                try:
+                    add_order(ORDERS, args)
+                except ValueError as e:
+                    print(f"Ошибка: {e}")
             case "exit":
                 print("Выход из программы")
                 break
