@@ -1,6 +1,6 @@
-import makeOrdinal = require('./makeOrdinal');
-import isFinite = require('./isFinite');
-import isSafeNumber = require('./isSafeNumber');
+import makeOrdinal = require('./makeOrdinal.js');
+import isFiniteNumber = require('./isFinite.js');
+import isSafeNumber = require('./isSafeNumber.js');
 
 const TEN = 10;
 const ONE_HUNDRED = 100;
@@ -21,7 +21,7 @@ const TENTHS_LESS_THAN_HUNDRED: readonly string[] = [
 ];
 
 function toWords(number: number, asOrdinal: boolean): string {
-    if (!isFinite(number)) {
+    if (!isFiniteNumber(number)) {
         throw new TypeError(
             'Not a finite number: ' + String(number) + ' (' + typeof number + ')',
         );
