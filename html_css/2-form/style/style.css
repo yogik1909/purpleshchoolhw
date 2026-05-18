@@ -1,0 +1,25 @@
+h1 {
+
+    color: #333333;
+    font-size: 36px;
+    font-family: 'Open Sans';
+    font-weight: 700;
+    /* 
+    font: "Open Sans", 700,  36px, #333333; 
+    */
+
+}
+
+button {
+    background-color: #089FE0;
+    font-family: Open Sans;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24.51px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+a {
+    color: #089FE0;
+}
